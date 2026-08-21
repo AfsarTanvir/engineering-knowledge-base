@@ -2,6 +2,11 @@
 
 A practical guide to identifying database bottlenecks and optimizing query performance, covering both MySQL and PostgreSQL.
 
+> This note covers finding slow queries and the first pass of `EXPLAIN`. For
+> the plan output in depth — cost units, actual vs estimated rows, `BUFFERS`,
+> per-loop averaging — see
+> [reading-query-plans.md](../query-planner/reading-query-plans.md).
+
 ## Table of Contents
 
 1. [Finding Slow Queries](#finding-slow-queries)
@@ -467,6 +472,8 @@ ANALYZE table_name;  -- Update stats for one table
 
 ANALYZE;  -- Update stats for entire database
 ```
+
+For what those statistics contain and why stale or misleading ones produce bad plans, see [cardinality-estimation-and-statistics.md](../query-planner/cardinality-estimation-and-statistics.md).
 
 ### Comparing Plan Performance
 

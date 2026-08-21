@@ -132,7 +132,9 @@ pathological cases) the third-party `pg_hint_plan` extension.
 ## Join Algorithms in Brief
 
 Join order and join *algorithm* are tied together — the right order only
-pays off if the algorithm matches it:
+pays off if the algorithm matches it (see
+[join-algorithms.md](../query-planner/join-algorithms.md) for the full
+treatment):
 
 | Algorithm       | Best when                                                    | Cost shape                          |
 | :---------------- | :--------------------------------------------------------------- | :--------------------------------------- |
