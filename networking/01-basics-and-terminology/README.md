@@ -97,8 +97,8 @@ travels, it gets split into packets, and each packet is wrapped
 
 ```
 ┌──────────────────┬─────────────────────────────┐
-│   IP Header       │         Payload (data)      │
-│ (src IP, dst IP)  │                              │
+│   IP Header      │         Payload (data)      │
+│ (src IP, dst IP) │                             │
 └──────────────────┴─────────────────────────────┘
 ```
 
@@ -120,8 +120,8 @@ Ethernet/Wi-Fi), one layer below packets. A frame wraps a packet with:
 
 ```
 ┌───────────────────┬──────────────────────────────────┬────────┐
-│   Frame Header      │           Packet (IP)              │ Trailer│
-│ (src MAC, dst MAC)  │  (src IP, dst IP + payload)         │ (CRC)  │
+│   Frame Header    │           Packet (IP)            │ Trailer│
+│ (src MAC, dst MAC)│  (src IP, dst IP + payload)      │ (CRC)  │
 └───────────────────┴──────────────────────────────────┴────────┘
 ```
 
