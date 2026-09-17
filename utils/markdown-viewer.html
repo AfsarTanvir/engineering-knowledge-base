@@ -1,112 +1,346 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Markdown Viewer</title>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px;
-      line-height: 1.6;
-      color: #333;
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f6f8fa;
+      --text: #24292f;
+      --text-muted: #57606a;
+      --border: #d8dee4;
+      --accent: #0969da;
+      --code-bg: #f6f8fa;
+      --tip: #1a7f37;
+      --warn: #bf8700;
+      --note: #8250df;
+      --danger: #cf222e;
+      --max-width: 900px;
     }
-    .viewer-container {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --bg-soft: #161b22;
+        --text: #e6edf3;
+        --text-muted: #8b949e;
+        --border: #30363d;
+        --accent: #58a6ff;
+        --code-bg: #161b22;
+        --tip: #3fb950;
+        --warn: #d29922;
+        --note: #a371f7;
+        --danger: #f85149;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header.topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
     .file-path {
-      color: #666;
+      color: var(--text-muted);
       font-size: 12px;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+      word-break: break-all;
+      flex: 1;
+      min-width: 0;
     }
+    .topbar a {
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .viewer-container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 80px;
+    }
+
+    h1, h2, h3, h4 {
+      line-height: 1.3;
+      margin-top: 1.8em;
+      margin-bottom: 0.6em;
+      font-weight: 600;
+    }
+    h1 { font-size: 2em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; margin-top: 0; }
+    h2 { font-size: 1.45em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+    h3 { font-size: 1.2em; }
+    h4 { font-size: 1em; }
+
+    p { margin: 0 0 1em; }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2em 0;
+    }
+
+    /* ---------- code ---------- */
     pre {
-      background: #f5f5f5;
-      padding: 1em;
-      padding-top: 40px;
+      background: var(--code-bg);
+      padding: 36px 16px 16px;
       overflow-x: auto;
-      border-radius: 4px;
+      border-radius: 6px;
       position: relative;
-      border-left: 3px solid #007bff;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      margin: 0 0 1.2em;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      font-size: 13.5px;
+      line-height: 1.55;
     }
     code {
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      padding: 0.15em 0.4em;
+      border-radius: 4px;
+      border: 1px solid var(--border);
     }
+
     .copy-btn {
       position: absolute;
-      top: 8px;
-      right: 8px;
-      padding: 6px 12px;
-      background: #007bff;
-      color: white;
+      top: 6px;
+      right: 6px;
+      padding: 4px 10px;
+      background: var(--accent);
+      color: #fff;
       border: none;
       cursor: pointer;
-      font-size: 12px;
+      font-size: 11px;
       border-radius: 4px;
-      font-weight: 500;
-      transition: background 0.2s;
+      font-weight: 600;
+      opacity: 0.75;
+      transition: opacity 0.15s;
     }
-    .copy-btn:hover {
-      background: #0056b3;
+    .copy-btn:hover { opacity: 1; }
+
+    /* ---------- tables ---------- */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0 0 1.4em;
+      border: 1px solid var(--border);
+      border-radius: 6px;
     }
-    .copy-btn:active {
-      background: #004085;
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14.5px;
     }
-    h1, h2, h3 {
-      color: #222;
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 9px 13px;
+      text-align: left;
+      vertical-align: top;
     }
-    a {
-      color: #007bff;
-      text-decoration: none;
+    th {
+      background: var(--bg-soft);
+      font-weight: 600;
+      white-space: nowrap;
     }
-    a:hover {
-      text-decoration: underline;
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--bg-soft); }
+
+    /* ---------- callouts ---------- */
+    blockquote {
+      margin: 0 0 1.3em;
+      padding: 12px 16px;
+      border-left: 4px solid var(--border);
+      background: var(--bg-soft);
+      border-radius: 0 6px 6px 0;
+      color: var(--text);
     }
+    blockquote p:last-child { margin-bottom: 0; }
+    blockquote.tip    { border-left-color: var(--tip); }
+    blockquote.warn   { border-left-color: var(--warn); }
+    blockquote.note   { border-left-color: var(--note); }
+    blockquote.danger { border-left-color: var(--danger); }
+
+    /* ---------- mermaid ---------- */
+    .mermaid {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+      margin: 0 0 1.4em;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .mermaid svg { max-width: 100%; height: auto; }
+
+    /* ---------- lists ---------- */
+    ul, ol { padding-left: 1.6em; margin: 0 0 1em; }
+    li { margin-bottom: 0.35em; }
+    li > ul, li > ol { margin-top: 0.35em; }
+
+    img { max-width: 100%; height: auto; border-radius: 6px; }
+
     .error {
-      color: #d32f2f;
-      padding: 15px;
-      background: #ffebee;
-      border-radius: 4px;
+      color: var(--danger);
+      padding: 16px;
+      background: var(--bg-soft);
+      border: 1px solid var(--danger);
+      border-radius: 6px;
+    }
+
+    .loading { color: var(--text-muted); }
+
+    @media (max-width: 600px) {
+      body { font-size: 15px; }
+      .viewer-container { padding: 20px 14px 60px; }
+      h1 { font-size: 1.6em; }
+      h2 { font-size: 1.3em; }
     }
   </style>
 </head>
 <body>
+  <header class="topbar">
+    <span class="file-path" id="file-path"></span>
+    <a href="#" id="raw-link" target="_blank" rel="noopener">raw</a>
+  </header>
+
   <div class="viewer-container">
-    <div class="file-path" id="file-path"></div>
-    <div id="markdown-content"></div>
+    <div id="markdown-content" class="loading">Loading…</div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
     import { addCopyButtonsToCodeBlocks } from './clipboard.js';
 
-    function getMarkdownFilePath() {
-      const params = new URLSearchParams(window.location.search);
-      return params.get('file') || '../databases/query-optimization/slow-query-fixes.md';
+    const params = new URLSearchParams(window.location.search);
+    const filePath = params.get('file') || '../README.md';
+
+    document.getElementById('file-path').textContent = `📄 ${filePath}`;
+    document.getElementById('raw-link').href = filePath;
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: prefersDark ? 'dark' : 'default',
+      securityLevel: 'strict',
+      flowchart: { useMaxWidth: true },
+      sequence: { useMaxWidth: true }
+    });
+
+    // Turn ```mermaid code blocks into <div class="mermaid"> so mermaid can render them.
+    function extractMermaidBlocks(container) {
+      const blocks = container.querySelectorAll('pre > code.language-mermaid');
+      blocks.forEach(code => {
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = code.textContent;
+        code.parentElement.replaceWith(div);
+      });
+      return blocks.length;
     }
 
-    const filePath = getMarkdownFilePath();
-    document.getElementById('file-path').textContent = `📄 ${filePath}`;
+    // Wrap tables so wide ones scroll instead of breaking the layout.
+    function wrapTables(container) {
+      container.querySelectorAll('table').forEach(table => {
+        const wrap = document.createElement('div');
+        wrap.className = 'table-wrap';
+        table.parentElement.insertBefore(wrap, table);
+        wrap.appendChild(table);
+      });
+    }
+
+    // Colour-code callout blockquotes by their leading emoji.
+    const CALLOUTS = [
+      { match: '💡', cls: 'tip' },
+      { match: '⚠️', cls: 'warn' },
+      { match: '📌', cls: 'note' },
+      { match: '❌', cls: 'danger' }
+    ];
+    function styleCallouts(container) {
+      container.querySelectorAll('blockquote').forEach(bq => {
+        const text = bq.textContent.slice(0, 12);
+        const hit = CALLOUTS.find(c => text.includes(c.match));
+        if (hit) bq.classList.add(hit.cls);
+      });
+    }
+
+    // Give every heading an id so the Table of Contents links work.
+    function addHeadingIds(container) {
+      container.querySelectorAll('h1, h2, h3, h4').forEach(h => {
+        if (h.id) return;
+        h.id = h.textContent
+          .trim()
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-');
+      });
+    }
+
+    const target = document.getElementById('markdown-content');
 
     fetch(filePath)
       .then(res => {
         if (!res.ok) throw new Error(`File not found: ${filePath}`);
         return res.text();
       })
-      .then(markdown => {
-        document.getElementById('markdown-content').innerHTML = marked.parse(markdown);
-        addCopyButtonsToCodeBlocks(document, {
+      .then(async markdown => {
+        target.classList.remove('loading');
+        target.innerHTML = marked.parse(markdown);
+
+        const mermaidCount = extractMermaidBlocks(target);
+        wrapTables(target);
+        styleCallouts(target);
+        addHeadingIds(target);
+
+        if (mermaidCount > 0) {
+          try {
+            await mermaid.run({ querySelector: '.mermaid' });
+          } catch (err) {
+            console.error('Mermaid render failed:', err);
+          }
+        }
+
+        // Run after mermaid so diagrams never get a copy button.
+        addCopyButtonsToCodeBlocks(target, {
           buttonText: 'Copy',
           successText: '✓ Copied!',
           successDuration: 2000
         });
+
+        // Jump to an anchor if the URL has one.
+        if (window.location.hash) {
+          document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
+        }
       })
       .catch(err => {
-        document.getElementById('markdown-content').innerHTML = `<div class="error">⚠️ ${err.message}</div>`;
+        target.classList.remove('loading');
+        target.innerHTML = `<div class="error">⚠️ ${err.message}</div>`;
       });
   </script>
 </body>
