@@ -243,7 +243,8 @@ that lives on the server between calls.
 let currentUser: User | null = null
 
 export async function login({ request }: HttpContext) {
-  currentUser = await User.verify(request.input('email'), request.input('password'))
+  currentUser = await User.verify(request.input('email'), 
+  request.input('password'))
   return { ok: true }
 }
 
