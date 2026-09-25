@@ -468,6 +468,6 @@ It is mainly used in mobile apps, where you control both ends and ship updates.
   — where the certificate is actually installed.
 - [reverse-proxy](../../system-design/foundational/reverse-proxy.md) — the
   machine that terminates TLS for you.
-- [security headers](../11-api-security/04-security-headers.md) — HSTS and its
+- [security headers](../11-api-security/04-security-headers-part-1.md) — HSTS and its
   neighbours, in full.
 - [networking](../../networking/README.md) — the TCP connection TLS is built on.
