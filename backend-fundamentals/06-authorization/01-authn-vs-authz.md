@@ -297,7 +297,7 @@ service function without passing through any route.
 
 Put the real decision where the action actually happens — in the service or
 policy layer — and let the controller call it. Part 9 covers the layering:
-[`../09-application-architecture/03-repository-layer.md`](../09-application-architecture/03-repository-layer.md).
+[`../09-application-architecture/03-repository-layer-part-1.md`](../09-application-architecture/03-repository-layer-part-1.md).
 
 ```ts
 // Service layer: every caller — HTTP, job, CLI — goes through this one door.
@@ -427,7 +427,7 @@ most of them away. With an index on `company_id`, pattern B reads only the rows
 it needs. It also composes correctly with `LIMIT` and `OFFSET` — in pattern A,
 `take: 50` would take the first 50 rows *globally* and then filter, so a user
 could legitimately get zero results while having hundreds of projects. See
-[`../../databases/query-optimization/pagination-performance.md`](../../databases/query-optimization/pagination-performance.md).
+[`pagination-performance.md`](../../databases/query-optimization/pagination-performance.md).
 
 | | Fetch then check | Filter in query |
 |---|---|---|
@@ -493,7 +493,7 @@ filter cannot even be written.
   action" question at scale.
 - [`03-ownership-abac-and-multi-tenancy.md`](03-ownership-abac-and-multi-tenancy.md)
   — answering the "which resource" question, and keeping tenants apart.
-- [`../09-application-architecture/03-repository-layer.md`](../09-application-architecture/03-repository-layer.md)
+- [`../09-application-architecture/03-repository-layer-part-1.md`](../09-application-architecture/03-repository-layer-part-1.md)
   — where a mandatory tenant scope is enforced so it cannot be skipped.
 - [Part 11 — API Security](../11-api-security/) — BOLA in the wider catalogue of
   attacks against real APIs.
