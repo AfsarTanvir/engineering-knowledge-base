@@ -628,7 +628,7 @@ support conversation starts with twenty minutes of archaeology.
   the `400` vs `422` distinction used above.
 - [Headers](../01-http-foundations/05-headers.md) — `Deprecation`, `Sunset`,
   `Link`, and why `Vary` matters for header-based versioning.
-- [Migrations](../10-database-integration/02-migrations.md) — expand/contract
+- [Migrations](../10-database-integration/02-migrations-part-1.md) — expand/contract
   applied to schema changes.
 - [Webhooks](../12-files-and-integrations/03-webhooks.md) — delivery,
   signatures, and per-subscription versioning.
