@@ -442,7 +442,7 @@ They do not defend your server. They instruct the browser to defend the user
 against cross-site scripting, clickjacking, and downgrade to HTTP. Cheap to add,
 and worth adding by default.
 
-Full treatment in [security headers](../11-api-security/04-security-headers.md).
+Full treatment in [security headers](../11-api-security/04-security-headers-part-1.md).
 `Strict-Transport-Security` specifically is covered in
 [https-and-tls](06-https-and-tls.md).
 
@@ -488,7 +488,7 @@ Full treatment in [security headers](../11-api-security/04-security-headers.md).
   raw message.
 - [Status Codes](04-status-codes.md) — which headers pair with which code.
 - [HTTPS and TLS](06-https-and-tls.md) — `X-Forwarded-Proto` and HSTS.
-- [security headers](../11-api-security/04-security-headers.md) — the browser
+- [security headers](../11-api-security/04-security-headers-part-1.md) — the browser
   protection family.
 - [CORS](../11-api-security/03-cors.md) — why the browser hides some headers
   from your script.
