@@ -252,7 +252,7 @@ Two rows deserve extra words.
 **SQL.** Parameterized queries are not an escaping trick; the driver sends the
 query text and the values on separate channels, so a value can never become
 syntax. This is the only real defence, and it is covered in
-[Injection Attacks](../11-api-security/02-injection-attacks.md).
+[Injection Attacks](../11-api-security/02-injection-attacks-part-1.md).
 
 **Shell.** The safest answer is not to build shell commands from user input at
 all. If you must run a binary, use the array form — `execFile('convert',
@@ -555,7 +555,7 @@ form can never drift, and gives you a plain column to index and query.
   that all of this sits on.
 - [Schema validation](02-schema-validation.md) — where the normalizing
   `.transform()` and the length limits belong.
-- [Injection attacks](../11-api-security/02-injection-attacks.md) — SQL,
+- [Injection attacks](../11-api-security/02-injection-attacks-part-1.md) — SQL,
   command and template injection in full, and why parameterization is the only
   real answer.
 - [File uploads](../12-files-and-integrations/01-file-uploads.md) — the rest
