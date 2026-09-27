@@ -126,7 +126,7 @@ flowchart LR
    attacker-controlled.
 2. **API to database — escape, do not re-validate.** The check happened at
    arrow 1. Here what matters is never building SQL by string concatenation —
-   see [injection attacks](../11-api-security/02-injection-attacks.md).
+   see [injection attacks](../11-api-security/02-injection-attacks-part-1.md).
 3. **API to third party — your responsibility.** Forwarding unvalidated input
    to a payment provider makes their error your outage.
 4. **Third party to API — validate.** A webhook body is just an HTTP request
@@ -186,7 +186,7 @@ ticket saying "the app is broken".
 **Injection.** User input becomes part of a query or command. A `name` query
 parameter of `' OR '1'='1` concatenated into SQL returns every project of every
 company. The fix is parameterized queries — see
-[injection attacks](../11-api-security/02-injection-attacks.md).
+[injection attacks](../11-api-security/02-injection-attacks-part-1.md).
 
 **Mass assignment.** The whole next section is about this one.
 
@@ -355,7 +355,7 @@ async function registerUser(input: RegisterInput) {
 ```
 
 Business rules belong in the
-[service layer](../09-application-architecture/02-service-layer.md).
+[service layer](../09-application-architecture/02-service-layer-part-1.md).
 
 > **💡 Tip:** A uniqueness check in the service is still a race — two requests
 > can both read "not taken" at the same moment. The unique index is what
@@ -386,7 +386,7 @@ You need all three. They catch different things and they fail in different ways.
 A concrete case for layer 3: six months from now you write a one-off script to
 import invoices from a CSV file. It skips your API and its middleware entirely.
 A `CHECK (amount > 0)` constraint stops the bad row anyway. Constraints live in
-[migrations](../10-database-integration/02-migrations.md).
+[migrations](../10-database-integration/02-migrations-part-1.md).
 
 ```sql
 -- Layer 3: written once, enforced forever, from every source
@@ -490,11 +490,11 @@ The rules do not conflict: fail fast at the *request* level, be thorough at the
   to do with data that is valid but inconsistent.
 - [Error response design](../02-rest-api-design/05-error-response-design.md) —
   the shape of the 422 body validation failures return.
-- [Service layer](../09-application-architecture/02-service-layer.md) — where
+- [Service layer](../09-application-architecture/02-service-layer-part-1.md) — where
   business rules like uniqueness checks belong.
-- [Migrations](../10-database-integration/02-migrations.md) — where the last
+- [Migrations](../10-database-integration/02-migrations-part-1.md) — where the last
   line of defense, database constraints, is written.
-- [Injection attacks](../11-api-security/02-injection-attacks.md) — what
+- [Injection attacks](../11-api-security/02-injection-attacks-part-1.md) — what
   unvalidated input does inside a query or a shell.
 - [`unknown` vs `any`](../../typescript-fundamentals/unknown-any/unknown-any.md)
   — the type that forces you to check external data before using it.
