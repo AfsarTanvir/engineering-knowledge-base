@@ -55,7 +55,7 @@ And it must **not** own these:
 
 | Not the controller's job | Where it belongs |
 |---|---|
-| Business rules ("a free plan may hold 10 projects") | Service — [service layer](../09-application-architecture/02-service-layer.md) |
+| Business rules ("a free plan may hold 10 projects") | Service — [service layer](../09-application-architecture/02-service-layer-part-1.md) |
 | SQL or ORM query building | Repository — [repository pattern](../../software-engineering/design-patterns/repository-pattern.md) |
 | Sending email or firing webhooks | Service, usually through a queue |
 | Checking the input shape and types | Validator — [Part 4](../04-validation-and-input/) |
@@ -481,9 +481,9 @@ So you end up with a sensible test pyramid:
 
 The controller barely needs testing at all, because there is almost nothing in
 it to break. That is the point. See
-[unit testing](../13-testing-and-quality/02-unit-testing.md) for how to write
+[unit testing](../13-testing-and-quality/02-unit-testing-part-1.md) for how to write
 the service tests, and
-[service layer](../09-application-architecture/02-service-layer.md) for how to
+[service layer](../09-application-architecture/02-service-layer-part-1.md) for how to
 design the layer they test.
 
 ---
@@ -633,8 +633,8 @@ pattern and its trade-offs live in
 - [Middleware](03-middleware.md) — how `ctx.user` and `ctx.requestId` get attached in the first place.
 - [Anatomy of a Backend App](01-anatomy-of-a-backend-app.md) — where the controller sits in the pipeline.
 - [Validation & Input Handling](../04-validation-and-input/01-why-validation-matters.md) — how the input becomes a trusted typed object.
-- [Service Layer](../09-application-architecture/02-service-layer.md) — the layer the controller delegates to.
-- [Unit Testing](../13-testing-and-quality/02-unit-testing.md) — testing the rules without HTTP.
+- [Service Layer](../09-application-architecture/02-service-layer-part-1.md) — the layer the controller delegates to.
+- [Unit Testing](../13-testing-and-quality/02-unit-testing-part-1.md) — testing the rules without HTTP.
 - [type-narrowing](../../typescript-fundamentals/type-narrowing/type-narrowing.md) — making `ctx.user` typed instead of cast.
 - [event-loop](../../typescript-fundamentals/event-loop/event-loop.md) — why shared module state breaks under concurrency.
 - [dependency-injection](../../software-engineering/principles/dependency-injection.md) — wiring services with the right lifetime.
