@@ -423,15 +423,15 @@ are neither.
 
 | Need | Wrong tool | Right tool |
 |---|---|---|
-| Tell a partner's system an invoice was paid | Ask them to poll you | A [webhook](../12-files-and-integrations/03-webhooks.md) |
+| Tell a partner's system an invoice was paid | Ask them to poll you | A [webhook](../12-files-and-integrations/03-webhooks-part-2.md) |
 | Push a new task to every open board | Poll every 3 seconds | WebSockets, or GraphQL subscriptions |
 | Stream partial results from a long job | Hold the request open | Server-Sent Events, or gRPC streaming |
 | Tell your own services a user signed up | A chain of sync calls | A [message queue](../../system-design/foundational/message-queues/) |
 
 **Webhooks** invert the direction: *you* call *them* when something happens.
 Delivery, retries, signing and replay protection are covered in
-[Webhooks](../12-files-and-integrations/03-webhooks.md). Note that a webhook
-you send is itself a small REST call — the styles compose.
+[Webhooks — Part 2](../12-files-and-integrations/03-webhooks-part-2.md). Note
+that a webhook you send is itself a small REST call — the styles compose.
 
 **WebSockets** keep a connection open for two-way messages. Use them for live
 cursors, chat, presence and notifications; do not use them as a general
@@ -489,8 +489,8 @@ push mechanisms only where the direction of the need is genuinely reversed.**
   with an `errors` array, which changes everything in that file.
 - [n-plus-one-queries](../../databases/query-optimization/n-plus-one-queries.md)
   — the database pattern every GraphQL resolver tree runs into.
-- [Webhooks](../12-files-and-integrations/03-webhooks.md) — the outbound
-  complement to all three styles.
+- [Webhooks — Part 2](../12-files-and-integrations/03-webhooks-part-2.md) — the
+  outbound complement to all three styles.
 - [monolith-vs-microservices](../../system-design/foundational/monolith-vs-microservices.md)
   — whether you have service-to-service traffic worth gRPC at all.
 - [cdn-and-edge-caching](../../system-design/scale-patterns/cdn-and-edge-caching.md)
