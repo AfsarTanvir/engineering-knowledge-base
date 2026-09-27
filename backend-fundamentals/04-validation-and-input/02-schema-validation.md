@@ -526,7 +526,7 @@ flowchart TD
 ```
 
 Which secrets exist and how they reach the process is covered in
-[secrets and configuration](../11-api-security/05-secrets-and-configuration.md).
+[secrets and configuration](../11-api-security/05-secrets-and-configuration-part-1.md).
 
 ---
 
@@ -649,7 +649,7 @@ regexes.
   — why external data starts as `unknown` and a schema is how you narrow it.
 - [Equality and coercion](../../typescript-fundamentals/equality-and-coercion/equality-and-coercion.md)
   — the string/number rules that make coercion necessary.
-- [Secrets and configuration](../11-api-security/05-secrets-and-configuration.md)
+- [Secrets and configuration](../11-api-security/05-secrets-and-configuration-part-1.md)
   — where the env values you validate at boot come from.
 - [Pagination performance](../../databases/query-optimization/pagination-performance.md)
   — why `perPage` needs a hard maximum.
