@@ -82,7 +82,7 @@ These three get mixed up constantly. This table is worth memorising.
 > `U3VtbWVyMjAyNCE=`, and `echo 'U3VtbWVyMjAyNCE=' | base64 -d` reverses it
 > with no key and no effort. Base64 exists so binary data can travel through
 > text-only channels; it hides nothing. The same applies to the JWT payload in
-> [file 04](04-jwt.md) — base64 there means "readable by everyone".
+> [file 04](04-jwt-part-1.md) — base64 there means "readable by everyone".
 
 ---
 
@@ -506,9 +506,9 @@ algorithm.
 
 - [Authentication Basics](01-authentication-basics.md) — where password
   verification sits in the login flow, and user enumeration.
-- [Cookies and Sessions](03-cookies-and-sessions.md) — what you issue once the
+- [Cookies and Sessions](03-cookies-and-sessions-part-1.md) — what you issue once the
   password check passes.
-- [API Keys and Machine Auth](06-api-keys-and-machine-auth.md) — the same
+- [API Keys and Machine Auth](06-api-keys-and-machine-auth-part-1.md) — the same
   hashing rules applied to machine credentials.
 - [rate-limiting](../../system-design/foundational/rate-limiting.md) — hashing
   makes login expensive for you as well as for the attacker.

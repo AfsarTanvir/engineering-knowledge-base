@@ -156,10 +156,10 @@ always "email and password", covered in
 
 | Approach | What the client holds | Server looks it up? | Best for | Avoid when | Covered in |
 |---|---|---|---|---|---|
-| **Session cookies** | A random id in a cookie | Yes — every request | Normal web apps with one backend; anything needing instant logout | Truly stateless services; cross-domain APIs with no cookie support | [03-cookies-and-sessions.md](03-cookies-and-sessions.md) |
-| **JWT (JSON Web Token)** | A signed token holding claims | No — it verifies a signature | Many services verifying one identity; mobile apps; short-lived access tokens | You need instant revocation, or you are tempted to store user data in it | [04-jwt.md](04-jwt.md) |
-| **OAuth2 / OIDC** | A token issued by someone else | Depends on token type | "Log in with Google"; letting third-party apps act for your users | You only have your own users and your own single app — it is extra complexity for nothing | [05-oauth2-and-social-login.md](05-oauth2-and-social-login.md) |
-| **API keys** | A long random string | Yes — hashed lookup | Server-to-server calls, CLI tools, CI pipelines, integrations | A human is logging in from a browser | [06-api-keys-and-machine-auth.md](06-api-keys-and-machine-auth.md) |
+| **Session cookies** | A random id in a cookie | Yes — every request | Normal web apps with one backend; anything needing instant logout | Truly stateless services; cross-domain APIs with no cookie support | [03-cookies-and-sessions.md](03-cookies-and-sessions-part-1.md) |
+| **JWT (JSON Web Token)** | A signed token holding claims | No — it verifies a signature | Many services verifying one identity; mobile apps; short-lived access tokens | You need instant revocation, or you are tempted to store user data in it | [04-jwt.md](04-jwt-part-1.md) |
+| **OAuth2 / OIDC** | A token issued by someone else | Depends on token type | "Log in with Google"; letting third-party apps act for your users | You only have your own users and your own single app — it is extra complexity for nothing | [05-oauth2-and-social-login.md](05-oauth2-and-social-login-part-1.md) |
+| **API keys** | A long random string | Yes — hashed lookup | Server-to-server calls, CLI tools, CI pipelines, integrations | A human is logging in from a browser | [06-api-keys-and-machine-auth.md](06-api-keys-and-machine-auth-part-1.md) |
 
 > **📌 Remember:** these are not competitors. A real product often uses three
 > at once — session cookies for the web app, JWTs for its mobile app, API keys
@@ -253,7 +253,7 @@ Until the user proves they control the email address, the account is a claim,
 not a fact. Without verification, anyone can sign up as
 `ceo@bigcustomer.com` — and if you later add "Log in with Google" and link
 accounts by email, that becomes a full account takeover (see
-[file 05](05-oauth2-and-social-login.md)).
+[file 05](05-oauth2-and-social-login-part-1.md)).
 
 Send a link containing a **random, single-use, expiring token**. Store only a
 hash of the token, the same way you store passwords.
@@ -399,7 +399,7 @@ never be accepted again; **client side**, clear the cookie or stored token.
 
 With sessions, half 1 is one line: delete the session record. With a stateless
 JWT, half 1 is *impossible* without adding state back. Hold that thought — it
-is the main theme of [file 04](04-jwt.md).
+is the main theme of [file 04](04-jwt-part-1.md).
 
 ### Session fixation
 
@@ -483,12 +483,12 @@ depends entirely on which approach you chose:
 
 - [Passwords and Hashing](02-passwords-and-hashing.md) — how step 2 of the
   login flow, "verify the credentials", is actually done safely.
-- [Cookies and Sessions](03-cookies-and-sessions.md) — the default answer for
+- [Cookies and Sessions](03-cookies-and-sessions-part-1.md) — the default answer for
   steps 3 to 6.
-- [JWT](04-jwt.md) — the stateless alternative, and its revocation problem.
-- [OAuth2 and Social Login](05-oauth2-and-social-login.md) — when someone else
+- [JWT](04-jwt-part-1.md) — the stateless alternative, and its revocation problem.
+- [OAuth2 and Social Login](05-oauth2-and-social-login-part-1.md) — when someone else
   performs step 2 for you.
-- [API Keys and Machine Auth](06-api-keys-and-machine-auth.md) — the same six
+- [API Keys and Machine Auth](06-api-keys-and-machine-auth-part-1.md) — the same six
   steps when the caller is a program.
 - [How the Web Works](../01-http-foundations/01-how-the-web-works.md) — why
   statelessness forces proof onto every request.
