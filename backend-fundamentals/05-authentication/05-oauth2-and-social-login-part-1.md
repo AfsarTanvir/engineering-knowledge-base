@@ -380,7 +380,7 @@ grant_type=client_credentials&scope=invoices.read
 
 No user, no browser, no consent screen, no refresh token — when the access
 token expires you ask for another. Compare it with plain API keys in
-[file 06](06-api-keys-and-machine-auth.md): here the long-lived secret never
+[file 06](06-api-keys-and-machine-auth-part-1.md): here the long-lived secret never
 travels to the resource server, only a short-lived token does.
 
 ---
@@ -492,7 +492,7 @@ Step 4 is where the real danger lives, and it gets its own section in
   session you should create after a successful social login.
 - [Authentication Basics](01-authentication-basics.md) — where OAuth2 sits
   among the four approaches, and why email verification matters here.
-- [API Keys and Machine Auth](06-api-keys-and-machine-auth.md) — the simpler
+- [API Keys and Machine Auth](06-api-keys-and-machine-auth-part-1.md) — the simpler
   alternative to client credentials, and when each fits.
 - [HTTPS and TLS](../01-http-foundations/06-https-and-tls.md) — every redirect
   and every token exchange in this file assumes HTTPS.

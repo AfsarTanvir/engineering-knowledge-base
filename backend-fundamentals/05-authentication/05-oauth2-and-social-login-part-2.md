@@ -413,7 +413,7 @@ advantage over a static API key: the long-lived secret is presented only to
 the authorization server, and what reaches the resource server expires in an
 hour. Cache the token in memory until shortly before `expires_in` — do not
 request one per call. The simpler alternative is
-[file 06](06-api-keys-and-machine-auth.md).
+[file 06](06-api-keys-and-machine-auth-part-1.md).
 
 ### Introspection vs local JWT validation
 
@@ -490,7 +490,7 @@ introspecting once and caching the result for a few seconds.
   session you create once the social login succeeds.
 - [Authentication Basics](01-authentication-basics.md) — why email
   verification on your own side is a prerequisite for safe linking.
-- [API Keys and Machine Auth](06-api-keys-and-machine-auth.md) — the simpler
+- [API Keys and Machine Auth](06-api-keys-and-machine-auth-part-1.md) — the simpler
   machine credential, and when client credentials is worth the extra hop.
 - [Logging Basics](../08-logging-and-observability/01-logging-basics.md) —
   redaction, so tokens never reach your log store.

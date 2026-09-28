@@ -26,16 +26,16 @@ attack the mechanism exists to stop.
 2. [Passwords and Hashing](02-passwords-and-hashing.md) — why plain text and
    encryption are both wrong, salts, bcrypt / scrypt / Argon2, cost factors,
    timing-safe comparison, and upgrading hashes silently on next login.
-3. [Cookies and Sessions](03-cookies-and-sessions.md) — how cookies actually
+3. [Cookies and Sessions](03-cookies-and-sessions-part-1.md) — how cookies actually
    work at the HTTP level, every cookie attribute, server-side sessions, where
    to store them, session fixation, real logout, and CSRF protection.
-4. [JWT](04-jwt.md) — what a signed token is, the three parts, the claims you
+4. [JWT](04-jwt-part-1.md) — what a signed token is, the three parts, the claims you
    must verify, the revocation problem stated honestly, refresh-token rotation,
    where to store tokens, and the classic JWT attacks.
-5. [OAuth2 and Social Login](05-oauth2-and-social-login.md) — delegated access,
+5. [OAuth2 and Social Login](05-oauth2-and-social-login-part-1.md) — delegated access,
    the four roles, OAuth2 vs OpenID Connect, the Authorization Code flow with
    PKCE, grant types, and the account-linking trap.
-6. [API Keys and Machine Auth](06-api-keys-and-machine-auth.md) — when the
+6. [API Keys and Machine Auth](06-api-keys-and-machine-auth-part-1.md) — when the
    caller is a program: key generation and hashing, lifecycle and rotation,
    HMAC request signing for webhooks, and mTLS / workload identity.
 
