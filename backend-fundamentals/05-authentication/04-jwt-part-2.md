@@ -470,7 +470,7 @@ JWTs earn their complexity when at least one of these is true:
   use a fast hash while passwords may not.
 - [OAuth2 and Social Login — Part 2](05-oauth2-and-social-login-part-2.md) —
   the same refresh-token machinery, run by somebody else.
-- [API Keys and Machine Auth](06-api-keys-and-machine-auth.md) — long-lived
+- [API Keys and Machine Auth](06-api-keys-and-machine-auth-part-1.md) — long-lived
   machine credentials, and the same revocation questions.
 - [redis](../../system-design/foundational/redis.md) — the denylist and session
   store behind most of these mitigations.
