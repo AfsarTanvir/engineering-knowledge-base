@@ -491,7 +491,7 @@ filter cannot even be written.
   — the full `401` / `403` / `404` reference.
 - [`02-rbac.md`](02-rbac.md) — roles and permissions: answering the "what
   action" question at scale.
-- [`03-ownership-abac-and-multi-tenancy.md`](03-ownership-abac-and-multi-tenancy.md)
+- [`03-ownership-abac-and-multi-tenancy.md`](03-ownership-abac-and-multi-tenancy-part-1.md)
   — answering the "which resource" question, and keeping tenants apart.
 - [`../09-application-architecture/03-repository-layer-part-1.md`](../09-application-architecture/03-repository-layer-part-1.md)
   — where a mandatory tenant scope is enforced so it cannot be skipped.
