@@ -468,7 +468,7 @@ for (const c of CASES) {
 
 Test the **denials**, not only the grants. A bug that allows too much passes
 every happy-path test ever written. More in
-[`../13-testing-and-quality/02-unit-testing.md`](../13-testing-and-quality/02-unit-testing.md).
+[`../13-testing-and-quality/02-unit-testing-part-1.md`](../13-testing-and-quality/02-unit-testing-part-1.md).
 
 ---
 
@@ -508,7 +508,7 @@ every happy-path test ever written. More in
 
 - [`01-authn-vs-authz.md`](01-authn-vs-authz.md) — why a permission check is
   never enough on its own without a record-level ownership check.
-- [`03-ownership-abac-and-multi-tenancy.md`](03-ownership-abac-and-multi-tenancy.md)
+- [`03-ownership-abac-and-multi-tenancy.md`](03-ownership-abac-and-multi-tenancy-part-1.md)
   — the rules RBAC cannot express, and how tenants stay separated.
 - [`../../system-design/foundational/caching-strategies.md`](../../system-design/foundational/caching-strategies.md)
   — invalidation strategies for the permission cache above.
@@ -516,5 +516,5 @@ every happy-path test ever written. More in
   — the query pattern that makes a naive permission lookup slow.
 - [`../../software-engineering/design-patterns/strategy-pattern.md`](../../software-engineering/design-patterns/strategy-pattern.md)
   — pluggable rules when a permission name is not enough.
-- [`../13-testing-and-quality/02-unit-testing.md`](../13-testing-and-quality/02-unit-testing.md)
+- [`../13-testing-and-quality/02-unit-testing-part-1.md`](../13-testing-and-quality/02-unit-testing-part-1.md)
   — testing denial cases, not only grants.
