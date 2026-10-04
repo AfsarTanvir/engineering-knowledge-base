@@ -344,7 +344,7 @@ The pattern: **generate the stored name yourself, keep the user's name in a
 database column for display, and resolve the final path and assert it is still
 inside the base directory.** Uploads have more to them — content-type
 sniffing, size limits, virus scanning — in
-[File Uploads](../12-files-and-integrations/01-file-uploads.md).
+[File Uploads](../12-files-and-integrations/01-file-uploads-part-2.md).
 
 ### Slugs
 
@@ -558,7 +558,7 @@ form can never drift, and gives you a plain column to index and query.
 - [Injection attacks](../11-api-security/02-injection-attacks-part-1.md) — SQL,
   command and template injection in full, and why parameterization is the only
   real answer.
-- [File uploads](../12-files-and-integrations/01-file-uploads.md) — the rest
+- [File uploads](../12-files-and-integrations/01-file-uploads-part-2.md) — the rest
   of the upload story: content types, size limits, storage.
 - [Expression and functional indexes](../../databases/indexing/02-expression-and-functional-indexes.md)
   — how `LOWER(email)` indexes work and when the planner can use them.
