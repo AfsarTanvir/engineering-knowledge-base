@@ -28,20 +28,26 @@ and where data lives.
    design, how to tell data you must keep from data you can rebuild, the three
    storage options and where the bytes physically live, and the single-host
    limit that pushes real user data out of Docker entirely.
+4. **[stateful-containers.md](stateful-containers.md)** — why three containers
+   from one `mysql` image are three unrelated databases, what really happens
+   when two servers share one data volume (InnoDB refuses), and a working
+   source + replica pair in Compose: state is shared over the network, never
+   through a shared disk.
 
 ## Read in this order
 
-Strictly 1 → 2 → 3. Each one assumes the previous.
+Strictly 1 → 2 → 3 → 4. Each one assumes the previous.
 
 ```text
-overview  →  image vs container  →  volumes
- what a       what persists and      where state
- container    what does not          actually goes
- is
+overview  →  image vs container  →  volumes  →  stateful containers
+ what a       what persists and      where state   how two containers
+ container    what does not          actually goes share one database's
+ is                                                state
 ```
 
 File 1 explains the union filesystem that file 2's writable layer is built on;
-file 2 explains the writable layer that file 3 exists to work around.
+file 2 explains the writable layer that file 3 exists to work around; file 4
+takes file 3's "one volume, one owner" rule to its conclusion for databases.
 
 ## What you should be able to do after this folder
 
@@ -77,4 +83,6 @@ something there feels arbitrary, the reason is here.
 - **Once one host is not enough** → [../kubernetes/](../kubernetes/),
   [../deployment-strategies/](../deployment-strategies/) and
   [../ci-cd/](../ci-cd/).
+- **How database replication actually works** →
+  [databases/replication/](../../databases/replication/)
 - **Where user files belong** → [02-object-storage-and-serving-files.md](../../backend-fundamentals/12-files-and-integrations/02-object-storage-and-serving-files.md)
