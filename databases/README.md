@@ -24,6 +24,7 @@ SaaS schema (users, companies, projects, tasks, invoices, notifications).
 | 6 | [query-patterns/](query-patterns/) | Writing queries that stay fast as data grows |
 | 7 | [transactions-and-concurrency/](transactions-and-concurrency/) | What happens when two users hit the same row |
 | 8 | [operations/](operations/) | Pooling, vacuum, replicas, and keeping it healthy |
+| 9 | [replication/](replication/) | How a second database stays in sync — MySQL binlog, GTIDs, lag, Group Replication |
 
 ## Suggested order
 
@@ -33,8 +34,8 @@ If you are starting from scratch, read in this order:
 fundamentals  →  data-modeling  →  indexing  →  query-planner
                                         ↓
    operations  ←  transactions-and-concurrency  ←  query-optimization
-                                                          ↕
-                                                   query-patterns
+        ↓                                                 ↕
+   replication                                     query-patterns
 ```
 
 Do not read a whole folder in one day. See the daily routine in the
@@ -51,6 +52,7 @@ memory the next day.
 - [x] query-patterns — 4 files
 - [x] transactions-and-concurrency — 13 files
 - [x] operations — 9 files
+- [x] replication — 6 files (MySQL 8.4, built on live Docker labs)
 
 Longer topics are split into `-part-1` / `-part-2` files so no single file runs
 past ~500 lines. Each part stands on its own: its own contents, common
